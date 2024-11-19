@@ -1,12 +1,12 @@
 from PyQt6.QtWidgets import (
     QPushButton, QVBoxLayout, QPlainTextEdit, QHBoxLayout, QLabel,
-    QCalendarWidget, QSpinBox, QWidget)
+    QCalendarWidget, QSpinBox, QWidget, QComboBox)
 
 
-def initAddingFormUI(self):
+def init_adding_form_ui(self):
     self.setWindowTitle('Добавить элемент')
     self.setGeometry(100, 100, 300, 300)
-    self.setFixedSize(500, 500)
+    self.setFixedSize(600, 600)
 
     self.title = QPlainTextEdit(self)
     self.title.setFixedHeight(30)
@@ -17,6 +17,9 @@ def initAddingFormUI(self):
     self.calendarWidget.setFixedSize(400, 300)
 
     self.watering_frequency = QSpinBox(self)
+
+    self.mainer_name = QComboBox()
+    self.mainer_name.addItems(self.parent().result)
 
     self.pushButton = QPushButton('Добавить', self)
     self.pushButton.clicked.connect(self.get_adding_verdict)
@@ -40,9 +43,15 @@ def initAddingFormUI(self):
     frequency_label.addWidget(self.watering_frequency)
     layout.addLayout(frequency_label)
 
+    mainer_label = QHBoxLayout()
+    self.label_4 = QLabel('Имя владельца')
+    mainer_label.addWidget(self.label_4)
+    mainer_label.addWidget(self.mainer_name)
+    layout.addLayout(mainer_label)
+
     first_watering_date_label = QHBoxLayout()
-    self.y = QLabel('Дата последнего полива')
-    first_watering_date_label.addWidget(self.y)
+    self.label_5 = QLabel('Дата последнего полива')
+    first_watering_date_label.addWidget(self.label_5)
     first_watering_date_label.addWidget(self.calendarWidget)
     layout.addLayout(first_watering_date_label)
 

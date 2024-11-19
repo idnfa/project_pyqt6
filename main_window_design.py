@@ -3,13 +3,14 @@ from PyQt6.QtWidgets import (QTableWidget,
                              QPushButton, QVBoxLayout, QWidget, QStatusBar, QLabel)
 
 
-def initUI(self):
+def init_ui(self):
     self.setWindowTitle('Поливайка')
-    self.tableWidget = QTableWidget(self)
 
+    self.tableWidget = QTableWidget(self)
     self.tableWidget.setColumnCount(4)
     self.tableWidget.setHorizontalHeaderLabels(['ИД', 'Название', 'Информация', 'Периодичность полива'])
     self.tableWidget.horizontalHeader().setSectionResizeMode(QtWidgets.QHeaderView.ResizeMode.Stretch)
+
     self.addButton = QPushButton('добавить', self)
     self.addButton.clicked.connect(self.adding)
 
